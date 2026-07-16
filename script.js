@@ -82,42 +82,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 6. Contact Form AJAX Submission
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            const submitButton = contactForm.querySelector('button[type="submit"]');
-            const originalButtonText = submitButton.textContent;
-            submitButton.textContent = 'Enviando...';
-            submitButton.disabled = true;
-
-            const formData = new FormData(contactForm);
-
-            fetch(contactForm.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => {
-                if (response.ok) {
-                    alert('¡Gracias por tu mensaje! Te responderé a la brevedad.');
-                    contactForm.reset();
-                } else {
-                    alert('Hubo un problema al enviar tu mensaje. Por favor, inténtalo de nuevo.');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Hubo un error de conexión. Por favor, intente de nuevo.');
-            })
-            .finally(() => {
-                submitButton.textContent = originalButtonText;
-                submitButton.disabled = false;
-            });
-        });
-    }
 });
