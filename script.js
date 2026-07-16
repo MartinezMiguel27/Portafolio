@@ -61,8 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 5. Portfolio Case Study Tab Switcher
     const tabs = document.querySelectorAll('.showcase-tab');
-    const displayIframe = document.getElementById('showcase-iframe');
-    const displayVideoContainer = document.getElementById('showcase-video-container');
     const tabContents = document.querySelectorAll('.tab-content');
 
     tabs.forEach(tab => {
@@ -72,17 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Add active to current tab
             tab.classList.add('active');
 
-            const targetType = tab.getAttribute('data-type');
             const targetContentId = tab.getAttribute('data-target');
-
-            // Toggle Iframe and Video visibility based on tab type
-            if (targetType === 'iframe') {
-                if (displayIframe) displayIframe.style.display = 'block';
-                if (displayVideoContainer) displayVideoContainer.style.display = 'none';
-            } else if (targetType === 'video') {
-                if (displayIframe) displayIframe.style.display = 'none';
-                if (displayVideoContainer) displayVideoContainer.style.display = 'flex';
-            }
 
             // Update Tab Content View
             tabContents.forEach(content => {
@@ -93,20 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
-
-    // Check if the video file is present and can be loaded
-    const videoElement = document.getElementById('showcase-video');
-    const videoPlaceholder = document.getElementById('video-placeholder');
-    if (videoElement && videoPlaceholder) {
-        videoElement.addEventListener('loadeddata', () => {
-            // Video is present and loaded, hide the placeholder
-            videoPlaceholder.style.display = 'none';
-        });
-        videoElement.addEventListener('error', () => {
-            // Video missing or failed, make sure placeholder is visible
-            videoPlaceholder.style.display = 'flex';
-        });
-    }
 
     // 6. Contact Form Submission Mock
     const contactForm = document.getElementById('contact-form');
