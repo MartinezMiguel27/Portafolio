@@ -82,19 +82,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 6. Contact Form Submission Mock
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-
-            // Simple user friendly confirmation
-            alert(`¡Gracias por tu mensaje, ${name}! Te responderé a la brevedad a ${email}.`);
-            contactForm.reset();
-        });
-    }
 });
